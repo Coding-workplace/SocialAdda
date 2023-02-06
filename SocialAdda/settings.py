@@ -56,7 +56,7 @@ ROOT_URLCONF = 'SocialAdda.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +124,15 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+#setting up media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#telling django to use our defined model for authentications
+AUTH_USER_MODEL = "main.User"
+
+
+#message tags used to make django understand our(bootstrap) tag
+MESSAGE_TAGS={
+	messages.ERROR:'danger',
+}
