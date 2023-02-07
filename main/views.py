@@ -4,8 +4,28 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
 from .models import *
 # Create your views here.
+
+
+def home_view(request):
+    all_posts = Post.objects.all().order_by('-date_created')
+    paginator = Paginator(all_posts, 10)
+    page_number = request.GET.get('page')
+    if page_number == None:
+        page_number = 1
+    posts = paginator.get_page(page_number)
+    followings = []
+    suggestions = []
+    return render(request, "feed.html", {
+        "posts": posts,
+        "suggestions": suggestions,
+        "page": "all_posts",
+        'profile': False
+    })
+
 
 def profile_view(request):
 	pass
@@ -41,7 +61,7 @@ def signup_view(request):
 				Follower.objects.create(user=user)
 				login(request, user)
 				messages.success(request,"User created")
-				return redirect("home_page")
+				return redirect("home")
 	else:
 		return render(request,"signup.html")
 def login_view(request):
@@ -56,7 +76,7 @@ def login_view(request):
 			if user is not None:
 				login(request,user)
 				messages.success(request,"Login Successfully!")
-				return redirect("home_page")
+				return redirect("home")
 			else:
 				messages.error(request,"Invalid Credentials!")
 				return redirect("/")
