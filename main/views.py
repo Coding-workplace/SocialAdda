@@ -22,11 +22,11 @@ def signup_view(request):
 		confirmation = request.POST["confirmation"]
 		checkUser = User.objects.filter(username=username)
 		checkEmail = User.objects.filter(email=email)
-		if chekUser:
-				message.error(request,"Username already taken!")
+		if checkUser:
+				messages.error(request,"Username already taken!")
 				return redirect("/signup")
 		elif checkEmail:
-				message.error(request,"Account already exist with this email!")
+				messages.error(request,"Account already exist with this email!")
 				return redirect("/signup")
 		else:
 				user = User.objects.create_user(username, email, password)
@@ -40,7 +40,7 @@ def signup_view(request):
 				user.save()
 				Follower.objects.create(user=user)
 				login(request, user)
-				message.success(request,"User created")
+				messages.success(request,"User created")
 				return redirect("home_page")
 	else:
 		return render(request,"signup.html")
@@ -50,7 +50,7 @@ def login_view(request):
 		username=request.POST.get('username')
 		password=request.POST.get('password')
 		if username=="" or password == "":
-			message.error(request,"username or password is empty!")
+			messages.error(request,"username or password is empty!")
 		else:
 			user=authenticate(username=username,password=password)
 			if user is not None:
