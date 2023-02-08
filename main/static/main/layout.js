@@ -157,7 +157,6 @@ function remove_popup() {
     let login_popup = document.querySelector('.login-popup');
     small_popup.style.display = 'none';
     large_popup.style.display = 'none';
-    login_popup.style.display = 'none';
     large_popup.querySelector('#post-text').value = '';
     large_popup.querySelector('#insert-img').value = '';
     large_popup.querySelector('#img-div').style.backgroundImage = '';
@@ -485,9 +484,9 @@ function display_comment(comment, container, new_comment=false) {
 
 
 function goto_register() {
-    window.location.href = '/n/register';
+    window.location.href = '/signup';
 }
 
 function goto_login() {
-    window.location.href = '/n/login';
+    window.location.href = '/';
 }
