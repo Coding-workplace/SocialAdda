@@ -15,11 +15,19 @@
 .btn:disabled{
     cursor: default;
 }
+.btn-outline-info{
+    color:#5badff;
+    border-color: #5badff;
+}
+.btn-outline-info:hover{
+    border-color: #5badff;
+    background-color: #5badff;
+}
 
 .icon-btn {
     background: none;
     border-color: transparent;
-    color: #28a745;
+    color: #5badff;
     line-height: .82em;
     padding: 4px;
     margin: 0px;
@@ -80,11 +88,13 @@ svg{
     width: max-content;
 }
 .sidenav .nav-link > div:hover{
-    color: #17bf63;
-    background-color: #e7f8ef;
+    color: rgb(91, 173, 255);
+    background-color: #e8f3fd;
     transition-duration: .2s;
 }
-.new-post-btn{
+.btn-blue{
+    background-color: #5badff;
+    color:#fff;
     padding-left: 55px !important;
     padding-right: 55px !important;
     font-size: .95em;
@@ -105,7 +115,7 @@ svg{
     margin-top: auto;
 }
 .active a{
-    color: #28a745 !important;
+    color: #5badff !important;
 }
 
 
@@ -400,7 +410,7 @@ svg{
     transition-duration: .2s;
 }
 .post-actions .save:hover{
-    color: #17bf63;
+    color: #5badff;
     transition-duration: .2s;
 }
 .post-actions .svg-span{
@@ -424,7 +434,7 @@ svg{
     cursor: pointer;
 }
 .post-actions .save:hover .svg-span{
-    color: #17bf63;
+    color: #5badff;
     background-color: #def2eb;
     box-shadow: 0 0 0 3px #def2eb;
     transition-duration: .2s;
@@ -525,14 +535,14 @@ svg{
 }
 .page-item.active .page-link{
     color: white !important;
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #5badff;
+    border-color: #5badff;
 }
 .page-link{
-    color: #28a745;
+    color: #5badff;
 }
 .page-link:hover{
-    color: #218838;
+    color: #5badff;
 }
 .page-link:focus{
     box-shadow: none !important;
@@ -749,7 +759,7 @@ svg{
     margin: 0px;
 }
 .large-popup textarea:focus hr{
-    color: #28a745;
+    color: #5badff;
 }
 .large-popup .form-action-btns{
     display: flex;
