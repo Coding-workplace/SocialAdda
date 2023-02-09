@@ -13,7 +13,7 @@
                 {% elif is_follower %}
                     <button class="btn btn-blue float-right" onclick="unfollow_user(this,'{{username.username}}','edit_page')" id="following-btn">Following</button>
                 {% else %}
-                    <button class="btn btn-outline-info float-right" onclick="follow_user(this,'{{username.username}}','edit_page')" id="follow-btn">Follow</button>
+                    <button class="btn btn-outline-info float-right" onclick="follow_user(this,'{{username.username}}','edit_page')" >Follow</button>
                 {% endif %}
             </div>
             <div class="details-data">

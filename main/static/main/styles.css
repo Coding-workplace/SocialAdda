@@ -95,11 +95,8 @@ svg{
 .btn-blue{
     background-color: #5badff;
     color:#fff;
-    padding-left: 55px !important;
-    padding-right: 55px !important;
     font-size: .95em;
     font-weight: 530;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 24px !important;
 }
 .user_account{
     display: flex;
@@ -767,44 +764,6 @@ svg{
 }
 .large-popup .float-right{
     margin-left: 10px;
-}
-
-
-.login-popup{
-    display: none;
-    position: absolute;
-    top: 65px;
-    left: 25%;
-    width: 47.5%;
-    max-height: 90vh;
-    transform: translate(-50%,-50%);
-    background-color: white;
-    padding: 15px 20px 15px 20px;
-    overflow: auto;
-    border-radius: 17px;
-    animation-name: large_popup;
-    animation-duration: .2s;
-    animation-fill-mode: forwards;
-}
-.login-popup .icon-div{
-    margin-top: 40px;
-}
-.login-popup .icon-btn{
-    margin-left: -10px;
-    margin-top: -5px;
-}
-.login-popup .main_text-div{
-    margin-top: 55px;
-}
-.login-popup .btn-div{
-    margin-top: 65px;
-    width: 350px;
-    margin-bottom: 35px;
-}
-.login-popup .btn-div button{
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-bottom: 15px;
 }
 
 /*.blackout{
