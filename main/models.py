@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 from django.contrib.auth.models import Group, Permission
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 # Create your models here.
 
 class User(AbstractUser):
@@ -20,6 +22,16 @@ class User(AbstractUser):
             "first_name": self.first_name,
             "last_name": self.last_name
         }
+@receiver(pre_delete, sender=User)
+def user_delete_handler(sender, instance, **kwargs):
+    # Handle the deletion of related objects here
+    # For example, you can delete the related posts and comments
+    instance.posts.all().delete()
+    instance.comments.all().delete()
+
+    # Remove the many-to-many relationships in the followers field
+    instance.followers.clear()
+    instance.following.clear()
 
 
 class Post(models.Model):
