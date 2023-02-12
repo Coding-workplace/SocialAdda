@@ -4,6 +4,11 @@
     min-height: 100%;
     font-family: system-ui, sans-serif;
 }
+.btn-blue{
+    background-color: #5badff;
+    color:#fff;
+
+}
 .btn{
     border-radius: 20px;
     padding: 0.32rem 1rem 0.375rem 1rem;
@@ -35,7 +40,7 @@
     width: max-content;
 }
 .icon-btn:hover{
-    background-color: rgba(40, 167, 69, .1);
+    background-color: #e8f3fd ;
     transition-duration: .35s;
     cursor: pointer;
 }
@@ -92,12 +97,7 @@ svg{
     background-color: #e8f3fd;
     transition-duration: .2s;
 }
-.btn-blue{
-    background-color: #5badff;
-    color:#fff;
-    font-size: .95em;
-    font-weight: 530;
-}
+
 .user_account{
     display: flex;
     font-size: .82rem;
@@ -547,8 +547,6 @@ svg{
 }
 
 
-
-
 .right-div{
     width: 28%;
     height: 100vh;
@@ -635,24 +633,6 @@ svg{
     text-decoration: none;
 }
 
-.guest-header{
-    padding: 13px 15px 8px 15px;
-    line-height: .9em;
-    font-weight: bolder;
-}
-.guest-header h5{
-    margin-bottom: 0px;
-}
-.guest-content{
-    padding: 0px 15px 10px 15px;
-    font-size: .88em;
-}
-.guest-btn{
-    padding: 0px 15px 15px 15px;
-}
-
-
-
 .right-div-content::-webkit-scrollbar{
     visibility: hidden;
     width: 8px;
@@ -665,7 +645,6 @@ svg{
     background-color: grey;
     transition-duration: .5s;
 }
-
 
 .blackout{
     position: fixed;
