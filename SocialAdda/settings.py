@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&ga-b$oirp03tquo)uk0ji&5i#&a3rp!7#zdzspq2t-5z#1o4u'
+SECRET_KEY = 'django-insecure-#^-f0cr(0_0=1*9m$ua-@4q5m#c0%iwd-8d3v_!er$1w8^rfs*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,6 +83,8 @@ DATABASES = {
     }
 }
 
+#telling django to use our defined model for authentications
+AUTH_USER_MODEL = "main.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -119,18 +122,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 #setting up media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-#telling django to use our defined model for authentications
-AUTH_USER_MODEL = "main.User"
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #message tags used to make django understand our(bootstrap) tag
 MESSAGE_TAGS={
