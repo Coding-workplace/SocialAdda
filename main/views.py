@@ -94,7 +94,7 @@ def signup_view(request):
 				messages.success(request,"User created")
 				return redirect("home")
 	else:
-		return render(request,"signup.html")
+		return render(request,"account/signup.html")
 def login_view(request):
 	'''login'''
 	if request.user.is_authenticated:
@@ -114,7 +114,7 @@ def login_view(request):
 				messages.error(request,"Invalid Credentials!")
 				return redirect("/")
 	else:
-		return render(request,"login.html")
+		return render(request,"account/login.html")
 
 def logout_view(request):
 	if request.user.is_authenticated:
