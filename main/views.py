@@ -8,8 +8,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from .models import *
 import json
+import requests
+from django.core.mail import send_mail
 # Create your views here.
 
+def verify_email(email):
+    api_key = 'Your_API_Key'
+    url = f"https://api.zerobounce.net/v2/validate?api_key={api_key}&email={email}"
+    response = requests.get(url)
+    data = response.json()
+    return data.get('status', 'unknown')
 
 def home_view(request):
 	if request.user.is_authenticated:
@@ -72,27 +80,34 @@ def signup_view(request):
 		password = request.POST["password"]
 		confirmation = request.POST["confirmation"]
 		checkUser = User.objects.filter(username=username)
+		val_result = verify_email(email)
+		if val_result != "valid":
+			messages.error(request,"You have entered wrong email, Enter your correct email!")
+			return redirect("/signup")
 		checkEmail = User.objects.filter(email=email)
 		if checkUser:
-				messages.error(request,"Username already taken!")
-				return redirect("/signup")
+			messages.error(request,"Username already taken!")
+			return redirect("/signup")
 		elif checkEmail:
-				messages.error(request,"Account already exist with this email!")
-				return redirect("/signup")
+			messages.error(request,"Account already exist with this email!")
+			return redirect("/signup")
 		else:
-				user = User.objects.create_user(username, email, password)
-				user.first_name = fname
-				user.last_name = lname
-				if profile is not None:						
-						user.profile_pic = profile
-				else:
-						user.profile_pic = "profile_pic/no_pic.png"
-				user.cover = cover           
-				user.save()
-				Follower.objects.create(user=user)
-				login(request, user)
-				messages.success(request,"User created")
-				return redirect("home")
+			user = User.objects.create_user(username, email, password)
+			user.first_name = fname
+			user.last_name = lname
+			if profile is not None:						
+				user.profile_pic = profile
+			else:
+				user.profile_pic = "profile_pic/no_pic.png"
+			user.cover = cover           
+			user.save()
+			Follower.objects.create(user=user)
+			#sending account creation email
+			message =  f"Dear {fname},\n\nThank you for signing up to SocialAdda. Your account has been created and you can now log in with the following credentials:\n\nUsername: {username}\nEmail: {email}\n\nWe hope you enjoy using our site!\n\nBest regards,\nThe SocialAdda team"
+			send_mail("Welcome to SocialAdda",message,'SocialAdda Team <noreply@SocialAdda.com>',[email])
+			login(request, user)
+			messages.success(request,"User created")
+			return redirect("home")
 	else:
 		return render(request,"account/signup.html")
 def login_view(request):

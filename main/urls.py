@@ -8,15 +8,25 @@ from django.contrib.auth.views import PasswordResetConfirmView as BasePasswordRe
 from django.contrib.auth.views import PasswordResetCompleteView as BasePasswordResetCompleteView
 from django.urls import reverse_lazy
 from .models import User
-
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordResetForm 
 class PasswordResetView(BasePasswordResetView):
     template_name = 'account/password_reset_form.html'
     email_template_name = 'account/password_reset_email.html'
     success_url = reverse_lazy('password_reset_done')
-
+    subject_template_name = 'account/password_reset_subject.txt'
     def get_user_model(self):
         return User
 
+    form_class = PasswordResetForm
+    
+    def form_valid(self, form):
+        try:
+            user = User.objects.get(email=form.cleaned_data['email'])
+        except User.DoesNotExist:
+            messages.error(self.request,"There is no user with the email address provided.")
+            return super().form_invalid(form)
+        return super().form_valid(form) 
 class PasswordResetDoneView(BasePasswordResetDoneView):
     template_name = 'account/password_reset_done.html'
 
@@ -26,7 +36,6 @@ class PasswordResetConfirmView(BasePasswordResetConfirmView):
 
     def get_user_model(self):
         return User
-
 class PasswordResetCompleteView(BasePasswordResetCompleteView):
     template_name = 'account/password_reset_complete.html'
 
