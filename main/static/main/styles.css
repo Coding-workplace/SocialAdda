@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 .icon-btn:active{
-    background-color: rgba(40, 167, 69, .23);
+    background-color: rgba(91, 173, 255, .23);
     transition-duration: .35s;
 }
 .icon-btn:focus{
@@ -176,7 +176,7 @@ svg{
     cursor: auto;
 }
 .textarea[contenteditable]:empty::before {
-    content: "What's happening?";
+    content: "Your content goes here";
     color: gray;
 }
 .textarea[contenteditable]:empty::before:hover{

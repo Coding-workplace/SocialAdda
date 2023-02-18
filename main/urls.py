@@ -9,7 +9,8 @@ from django.contrib.auth.views import PasswordResetCompleteView as BasePasswordR
 from django.urls import reverse_lazy
 from .models import User
 from django.contrib import messages
-from django.contrib.auth.forms import PasswordResetForm 
+from django.contrib.auth.forms import PasswordResetForm
+ 
 class PasswordResetView(BasePasswordResetView):
     template_name = 'account/password_reset_form.html'
     email_template_name = 'account/password_reset_email.html'

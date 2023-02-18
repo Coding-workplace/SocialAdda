@@ -139,7 +139,7 @@ def logout_view(request):
 	else:
 		return redirect("/")
 
-
+		
 def following(request):
     if request.user.is_authenticated:
         following_user = Follower.objects.filter(followers=request.user).values('user')
